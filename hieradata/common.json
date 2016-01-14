@@ -1,0 +1,48 @@
+{
+
+  "classes": [
+    "collectd",
+    "collectd::plugin::csv",
+    "collectd::plugin::load",
+    "collectd::plugin::cpu",
+    "ntp",
+    "apt"
+  ],
+
+  "collectd::plugin::load::interval": 60,
+
+  "collectd::plugin::cpu": [ null ],
+
+  "collectd::plugin::csv::datadir": "/var/lib/collectd/csv",
+  "collectd::plugin::csv::storerates": false,
+
+  "collectd::purge": true,
+  "collectd::purge_config": true,
+  "collectd::recurse": true,
+  "collectd::minimum_version": "5.5",
+
+  "ntp::autoupdate": false,
+  "ntp::enable": true,
+  "ntp::restrict": [
+    null
+  ],
+  "ntp::servers": [
+    "ntp.acipia iburst"
+  ],
+
+
+  "apt::proxy": {
+    "host": "proxy.acipia",
+    "port": "8080"
+  },
+  "apt::sources": {
+    "sonar-repo": {
+      "key": {
+        "id": "1462C964C63A0281BD4BE612AAA54D7CFAA20E56",
+        "source": "http://sonar-master/sonar.key"
+      },
+      "location": "http://sonar-master/",
+      "release": "stable"
+    }
+  }
+}
