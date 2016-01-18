@@ -3,6 +3,7 @@
   "classes": [
     "collectd",
     "collectd::plugin::csv",
+    "collectd::plugin::curl",
     "collectd::plugin::load",
     "collectd::plugin::cpu",
     "ntp",
@@ -20,6 +21,33 @@
   "collectd::purge_config": true,
   "collectd::recurse": true,
   "collectd::minimum_version": "5.5",
+
+  "collectd::plugin::curl::pages": {
+     "ub": {
+        "url": "http://ub.sonar.acipia.net/ping.json",
+        "matches": [ {
+          "dstype": "GaugeAverage",
+          "instance": "UB",
+          "regex": "[0-9]+",
+          "type": "response_time"
+         } ]
+       }
+    },
+
+  "collectd::plugin::curl_json": {
+    "ub-json": {
+        "url": "http://ub.sonar.acipia.net/ping.json",
+        "instance": "unibet",
+        "keys": {
+                "tcpinfo_rtt": {
+                        "type": "gauge"
+                }
+        }
+    }
+  },
+
+
+
 
   "ntp::autoupdate": false,
   "ntp::enable": true,
