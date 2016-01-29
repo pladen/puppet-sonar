@@ -2,10 +2,10 @@
 class collectd::plugin::write_http (
   $ensure     = present,
   $interval   = undef,
-  $urls  = {},
+  $nodes  = {},
 ) {
 
-  validate_hash($urls)
+  validate_hash($nodes)
 
   collectd::plugin {'write_http':
     ensure   => $ensure,
